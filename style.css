@@ -6,3 +6,59 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 350px;
+  max-width: 100%;
+  border: 2px solid black;
+  border-radius: 5px;
+  height: 60px;
+  transition: width 1s ease;
+}
+
+
+.navbar.hidden {
+    width: 60px;
+}
+
+.navbar li {
+  list-style: none;
+  text-align: center;
+  /* width: 65px; */
+  min-width: 65px;
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-item,
+.nav-toggle {
+  position: relative;
+  left: 0px;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.navbar.hidden .nav-item {
+  pointer-events: none;
+  left: 200px;
+  opacity: 0%;
+  /* display: none; */
+}
+
+.navbar.hidden .nav-toggle {
+    left: -130px;
+}
