@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+:root {
+  --navbar-width: 350px;
+  --navbar-height: 60px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,30 +18,29 @@ body {
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
+  font-size: 1rem;
 }
 
 .navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 350px;
+  width: var(--navbar-width);
   max-width: 100%;
   border: 2px solid black;
   border-radius: 5px;
-  height: 60px;
+  height: var(--navbar-height);
   transition: width 1s ease;
 }
 
-
 .navbar.hidden {
-    width: 60px;
+  width: var(--navbar-height);
 }
 
 .navbar li {
   list-style: none;
   text-align: center;
-  /* width: 65px; */
-  min-width: 65px;
+  min-width: var(--navbar-height);
 }
 
 .navbar li a {
@@ -49,16 +53,25 @@ body {
   position: relative;
   left: 0px;
   cursor: pointer;
-  transition: all 1s ease;
+  transition: left 1s ease, opacity 1s ease;
 }
 
 .navbar.hidden .nav-item {
   pointer-events: none;
   left: 200px;
   opacity: 0%;
-  /* display: none; */
 }
 
 .navbar.hidden .nav-toggle {
-    left: -130px;
+  left: calc(-2 * var(--navbar-height));
+}
+
+@media screen and (max-width: 300px) {
+  :root {
+    --navbar-width: 250px;
+    --navbar-height: 40px;
+  }
+  body {
+    font-size: 0.8rem;
+  }
 }
