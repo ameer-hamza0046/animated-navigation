@@ -3,6 +3,7 @@
 :root {
   --navbar-width: 350px;
   --navbar-height: 60px;
+  --duration: 0.5s;
 }
 
 * {
@@ -30,7 +31,7 @@ body {
   border: 2px solid black;
   border-radius: 5px;
   height: var(--navbar-height);
-  transition: width 1s ease;
+  transition: width var(--duration) ease;
 }
 
 .navbar.hidden {
@@ -53,7 +54,7 @@ body {
   position: relative;
   left: 0px;
   cursor: pointer;
-  transition: left 1s ease, opacity 1s ease;
+  transition: left var(--duration) ease, opacity var(--duration) ease;
   min-height: var(--navbar-height);
 
   display: flex;
@@ -68,26 +69,27 @@ body {
   height: 4px;
   width: calc(0.35 * var(--navbar-height));
   border-radius: 3px;
-  transition: transform 1s ease-in-out;
+  transition: transform var(--duration) ease-in-out;
   left: calc(var(--navbar-height) / 3);
 }
 
 .nav-toggle::before {
   top: calc(0.35 * var(--navbar-height));
+  transform: rotate(45deg) translate(5px, 5px);
 }
 .nav-toggle::after {
   bottom: calc(0.35 * var(--navbar-height));
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .navbar.hidden .nav-toggle::before {
   /* transform: rotate(35deg) translateY(6px); */
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(0) translate(0, 0);
 }
 
 .navbar.hidden .nav-toggle::after {
   /* transform: rotate(-35deg) translateY(-6px); */
-  transform: rotate(-45deg) translate(5px, -5px);
-
+  transform: rotate(0) translate(0, 0);
 }
 
 .navbar.hidden .nav-item {
@@ -98,15 +100,4 @@ body {
 
 .navbar.hidden .nav-toggle {
   left: calc(-2 * var(--navbar-height));
-}
-
-
-@media screen and (max-width: 300px) {
-  :root {
-    --navbar-width: 250px;
-    --navbar-height: 40px;
-  }
-  body {
-    font-size: 0.8rem;
-  }
 }
